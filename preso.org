@@ -1,0 +1,96 @@
+* Who am I?
+** Basics
+Daniel Peck
+peck@danielpeck.com
+ramblinpeck on most social networks
+github.com/peck
+** Past
+Information Security Focusd
+*** Secureworks 
+Intrusion Detection and Prevention Systems
+Vulnerability Assesment Rule Development
+*** DigitalBond 
+Offensive Focuses
+Control Systems (SCADA)
+*** Barracuda Networks (Labs group, greenfield research, threat analytics, social network threats)
+Focused on malicious uses of social network
+High level threat analytics
+*** Notable? Research
+[[https://www.blackhat.com/presentations/bh-usa-07/Feinstein_and_Peck/Whitepaper/bh-usa-07-feinstein_and_peck-WP.pdf][Caffeine Monekey - Automated Collection, Detection and Analysis of Malicious. JavaScript]]
+[[https://scadahacker.com/library/Documents/ICS_Vulnerabilities/DigitalBond%20-%20Leverage%20Ethernet%20Vulnerabilities%20in%20Field%20Devices.pdf][Leveraging Ethernet Vulnerabilities In Field Devices]]
+[[https://media.blackhat.com/us-13/US-13-Peck-Abusing-Web-APIs-Through-Scripted-Android-Applications-WP.pdf][Abusing Web APIs Through Scripted Android Applications]]
+
+** Present
+Chief Architect @ Luma
+WiFi you'll love.
+Built in Content Filtering and Security functions. Cover your dead spots, keep your kids safe.
+
+Elixir user since late 2014 ~ 1.0
+Largest Elixir (and maybe Erlang? prove me wrong) users in Atlanta
+* Why did I choose Elixir?
+It was the only thing that could do what I wanted it to do
+** Scalability
+** Concurrency
+** Fault Tolerance
+** Tooling
+OTP is AMAZING, but not neccesarily the most accessible from a documenation perspective.
+Many Elixir users attracted by the power and ease of Phoenix but taking the next step is often difficult
+
+* What are we going to cover
+You may never need a lot of these tips, but its a lot better to get familar with it now than when you do need it
+Know your application behaviour. Users do terrible things to APIs, things get weird at scale. 
+The BEAM gives you everything you need to survive the rough patches!
+* Understanding your app at runtime
+*** Observer
+Load Charts
+Table Viewer
+**** Memory Allocators
+RefC binaries
+Process state size
+
+[[https://blog.heroku.com/logplex-down-the-rabbit-hole][Troubleshooting Down The Logplex Rabbit Hole]]
+[[https://s3.amazonaws.com/erlang-in-anger/text.v1.0.2.pdf][Stuff Goes Bad: Erlang in Anger]]
+
+*** recon
+[[http://ferd.github.io/recon/recon.html][Recon library reference]]
+Easily run commands on all nodes in a cluster -> :recon.rpc()
+Remotely load code on a remote node -> :recon.remote_load()
+Trigger garbage collect and show process with most freed binaries -> :recon.bin_leak()
+Dump all info about a running process -> :recon.info()
+Tons more!
+* Types of Debugging
+*** Printf debugging
+Logger.<level> simple, effective, but time consuming
+*** IEx.pry
+simple require, drop in, very similar to ruby
+doesn't allow stepping
+Not bad for simple controllers but breaks down with more complex logic and stops process so a nono for live systems
+*** Tracing
+**** [[http://erlang.org/doc/man/dbg.html][dbg]]
+:dbg.start()
+:dbg.tracer()
+:dbg.tp(Factorial, :of, :x)
+:dbg.p(:all, :call)
+:dbg.stop()
+**** [[https://github.com/andytill/erlyberly][Erlyberly]]
+Erlang tracing gui, oddly enough written in java
+** Profiling
+*** [[http://erlang.org/doc/man/fprof.html][fprof]]
+*** [[http://erlang.org/doc/man/eprof.html][eprof]]
+:eprof.start
+:eprof.start_profiling(pid)
+#DO SOME STUFF
+curl -H "Content-Type: application/json" http://127.0.0.1:4000/factorial/8
+curl -H "Content-Type: application/json" http://127.0.0.1:4000/addorial/8
+
+:eprof.stop_profiling
+:eprof.log("/tmp/profiling_output.txt")
+:eprof.analyze
+*** [[https://github.com/proger/eflame][eflame]]
+
+* Setup
+ssh jump@jump.danielpeck.com -R 4000:localhost:4000
+iex --sname meetup -S mix phoenix.server
+iex --sname observer --hidden -e ':observer.start()'
+java -jar target/*runnable.jar
+
