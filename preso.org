@@ -86,14 +86,21 @@ Erlang tracing gui, oddly enough written in java
 *** [[http://erlang.org/doc/man/fprof.html][fprof]]
 *** [[http://erlang.org/doc/man/eprof.html][eprof]]
 :eprof.start
+
 :eprof.start_profiling(pid)
+
 #DO SOME STUFF
+
 curl -H "Content-Type: application/json" http://127.0.0.1:4000/factorial/8
+
 curl -H "Content-Type: application/json" http://127.0.0.1:4000/addorial/8
 
 :eprof.stop_profiling
+
 :eprof.log("/tmp/profiling_output.txt")
+
 :eprof.analyze
+
 *** [[https://github.com/proger/eflame][eflame]]
 
 * Setup
