@@ -89,8 +89,9 @@ curl -H "Content-Type: application/json" http://127.0.0.1:4000/addorial/8
 *** [[https://github.com/proger/eflame][eflame]]
 
 * Setup
-ssh jump@jump.danielpeck.com -R 4000:localhost:4000
 iex --sname meetup -S mix phoenix.server
-iex --sname observer --hidden -e ':observer.start()'
+
+iex --sname observer --hidden -e ':observer.start
+
 java -jar target/*runnable.jar
 
