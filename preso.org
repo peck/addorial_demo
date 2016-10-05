@@ -17,7 +17,9 @@ Focused on malicious uses of social network
 High level threat analytics
 *** Notable? Research
 [[https://www.blackhat.com/presentations/bh-usa-07/Feinstein_and_Peck/Whitepaper/bh-usa-07-feinstein_and_peck-WP.pdf][Caffeine Monekey - Automated Collection, Detection and Analysis of Malicious. JavaScript]]
+
 [[https://scadahacker.com/library/Documents/ICS_Vulnerabilities/DigitalBond%20-%20Leverage%20Ethernet%20Vulnerabilities%20in%20Field%20Devices.pdf][Leveraging Ethernet Vulnerabilities In Field Devices]]
+
 [[https://media.blackhat.com/us-13/US-13-Peck-Abusing-Web-APIs-Through-Scripted-Android-Applications-WP.pdf][Abusing Web APIs Through Scripted Android Applications]]
 
 ** Present
@@ -49,14 +51,20 @@ RefC binaries
 Process state size
 
 [[https://blog.heroku.com/logplex-down-the-rabbit-hole][Troubleshooting Down The Logplex Rabbit Hole]]
+
 [[https://s3.amazonaws.com/erlang-in-anger/text.v1.0.2.pdf][Stuff Goes Bad: Erlang in Anger]]
 
 *** recon
 [[http://ferd.github.io/recon/recon.html][Recon library reference]]
+
 Easily run commands on all nodes in a cluster -> :recon.rpc()
+
 Remotely load code on a remote node -> :recon.remote_load()
+
 Trigger garbage collect and show process with most freed binaries -> :recon.bin_leak()
+
 Dump all info about a running process -> :recon.info()
+
 Tons more!
 * Types of Debugging
 *** Printf debugging
